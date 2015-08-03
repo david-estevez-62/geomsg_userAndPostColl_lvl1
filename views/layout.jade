@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset="utf-8")
+    title Untitled
+    
+    link(rel="stylesheet", type="text/css", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="/main.css")
+
+  body
+    h1 GeoTag
+    a.navbtn(href="/" class="btn btn-default btn-xs" role="button") Logout
+    div(id="map")
+
+    block content
+
+    script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUaQQwfhiO-ZsQYZtgCZcm6L07w4di4JU")
+    script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="/client.js")

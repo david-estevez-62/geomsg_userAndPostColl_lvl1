@@ -1,0 +1,59 @@
+ html { height: 100vh }
+ body { height: 100vh; margin: 0; padding: 0 }
+
+.map {
+  position: relative;
+}
+
+.map img {
+  max-width: 100vh;
+}
+
+/*.note {
+  opacity: 0.7;
+  position: absolute;
+  left: 65px;
+  top: -32px;
+}
+
+.note-input {
+  border-radius: 5px;
+  border: 1px solid black;
+
+}
+.marker-img {
+  width: 100vw;
+  height:100vh;
+}*/
+
+#map {
+  width: 100vw;
+  height: 91vh;
+}
+
+
+
+
+
+ .login{
+  width:30.22%;
+  height:39.6%;
+  padding: 5px 0 0 20px;
+  /*position:relative;*/
+  border-radius: 5px;
+  margin:auto;
+  background-color: black;
+  margin-top: 120px;
+}
+.btn-block{
+  margin-top: 10px;
+  width:305px;
+}
+.inputlogin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width:305px;
+  height:35px;
+}
+
+#
