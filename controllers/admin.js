@@ -119,8 +119,6 @@ var adminController = {
     // database.
     user.save(function(err, user){
 
-      console.log(user)
-
       // If there is an error, it will come with some special codes and
       // information. We can customize the printed message based on
       // the error mongoose encounters

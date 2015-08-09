@@ -27,11 +27,11 @@ var userSchema = mongoose.Schema({
     {
       latitude: String,
       longitude: String,
-      date: {type:Date, default:Date()}
+      datetime: String
     }
 
   ],
-  points: Number,
+  points: {type:Number, default:10000},
   imageUrl: {type:String, default:'/img/gravatar.jpg'}
 });
 

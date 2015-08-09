@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-// var cookieParser = require('cookie-parser');
+var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var flash = require('connect-flash');
 var session = require('express-session');
@@ -32,16 +32,16 @@ app.use(require('express-session')({
     saveUninitialized: false
 }));
 
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use(flash());
 
 app.use(passport.initialize());
 
 app.use(passport.session());
 
-console.log(app.get("env"))
-console.log(app.settings.env)
-// console.log('hi');
+
+
+
 
 
 
@@ -77,12 +77,15 @@ app.use(passportConfig.isLoggedIn);
 
 
 app.get('/home', indexController.index);
+
+// Get Users location signed in(/App is open)
 app.post('/locate', userController.locate);
 
-// app.get('/home', function (req, res) {
-//   res.render('index');
-// });
 
+
+
+
+app.get('/scan', userController.scan)
 
 
 
