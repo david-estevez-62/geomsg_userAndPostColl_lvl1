@@ -2,16 +2,7 @@
 
 
 $(function(){
-
-
-$("#scanbtn").on("click", function(){
-  $.get("/scan", function(data){
-      console.log(data);
-  })
-})
-
-
-
+  
 
 
 function initialize() {
@@ -48,7 +39,7 @@ function initialize() {
 
   getLocation();
 
-  window.setInterval(getLocation, 10000);
+  // window.setInterval(getLocation, 30000);
 
   
 
