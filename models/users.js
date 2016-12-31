@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 
+
+
 /**
  * Create a schema (blueprint) for all users in the database.
  * If you want to collect additional info, add the fields here.
@@ -22,14 +24,16 @@ var userSchema = mongoose.Schema({
   email: {
     type: String
   },
-  "location":
+  location:
       {
         "type": { "type": String, default: "Point" },
         "coordinates": [Number, Number],
         "datetime": Date
       },
-  datetime: Date,
   points: {type:Number, default:10000},
+  tokens: {type:Number, default:100},
+  weapons: {type:Array, default:["mine1", "emp1", "missile1"]},
+  abilities: [],
   imageUrl: {type:String, default:'/img/gravatar.jpg'}
 });
 

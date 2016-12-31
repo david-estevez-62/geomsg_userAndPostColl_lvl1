@@ -2,15 +2,18 @@ doctype html
 html(lang='en')
   head
     meta(charset="utf-8")
-    title Untitled
-    
+    title GeoTag
+    link(rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")
     link(rel="stylesheet", type="text/css", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
     link(rel="stylesheet", type="text/css", href="/main.css")
 
+
   body
-    h1 GeoTag
-    btn#scanbtn(class="btn btn-default") Scan Area
-    a.navbtn(href="/" class="btn btn-default" role="button") Logout
+    header
+        h1(style="color:darkgrey;padding-left:10px;letter-spacing:1.5px;margin-top:3px;") GeoTag
+        h1(style="color:white;position:absolute;margin-top:-39px;right:90px;")= user.points + " | " +user.username
+         //- btn#scanbtn(class="btn btn-default") Scan Area
+        a.navbtn(href="/" class="btn btn-default" role="button" style="margin-top:-40px;") Logout
 
     
 
@@ -18,4 +21,5 @@ html(lang='en')
 
     script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUaQQwfhiO-ZsQYZtgCZcm6L07w4di4JU")
     script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="http://code.jquery.com/ui/1.11.4/jquery-ui.js")
     script(src="/client.js")

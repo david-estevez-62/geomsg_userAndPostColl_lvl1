@@ -10,7 +10,15 @@ var loginController = require('./controllers/login.js');
 var adminController = require('./controllers/admin');
 var userController = require('./controllers/users');
 
+// Seed the database
+var Weapons = require('./models/seeds/seed.js');
+
 var User = require('./models/users.js');
+var Weapon = require('./models/weapons.js');
+
+
+
+
 
 
 var passport = require('passport');
@@ -91,6 +99,16 @@ app.post('/locate', userController.locate);
 
 
 app.get('/scan', userController.scan)
+app.get('/weapon', function(req, res){
+  console.log(req.query.weapon)
+
+  Weapon.findOne({"name": req.query.weapon}, function(err, data){
+    console.log(data.imageUrl)
+
+    res.send(data);
+  });
+
+});
 
 
 

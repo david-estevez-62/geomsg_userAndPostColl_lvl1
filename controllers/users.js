@@ -13,8 +13,9 @@ var userController = {
           User.findOne({username:username}, function(err, user) {
             if (err) return handleErr(err);
 
+            // coordinates: [data.longitude, data.latitude]
             find = {
-              coordinates: [data.longitude, data.latitude],
+              coordinates: [data.latitude, data.longitude],
               datetime: date
             };
 
@@ -29,8 +30,7 @@ var userController = {
   scan: function (req, res) {
 
     var date = new Date();
-    var minusmin = date.setMinutes(date.getMinutes() - 20);
-
+    var minusmin = date.setMinutes(date.getMinutes() - 60);
 
     var geoJSONpoint = {
       "type": "Point",
@@ -51,12 +51,15 @@ var userController = {
 
       if ( otherUsers.length > 0 ) {
 
+
+
           
           // User.find({ username: user[i].username, $nearSphere: { $geometry: { type: "Point", coordinates: [ req.user.location.coordinates[0], req.user.location.coordinates[1] ]}, "$maxDistance": 300} }, function(err, data) {
-          User.find({ "username": { "$in": otherUsers }, "location.coordinates": {"$nearSphere": { "$geometry": geoJSONpoint, "$maxDistance": 8 } }} , function(err, data){
+          User.find({ "username": { "$in": otherUsers }, "location.coordinates": {"$nearSphere": { "$geometry": geoJSONpoint, "$maxDistance": 4000 } }} , function(err, data){
               if (err) return handleErr(err);
 
-              console.log(data);
+              // console.log(data);
+
               
               res.send(data)
 
