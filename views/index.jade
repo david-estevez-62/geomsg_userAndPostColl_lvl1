@@ -3,19 +3,4 @@ extends layout
 block content
 
   div(id="map")
-  div(class="scanradius1")
-  div(class="scanradius2")
-  div(class="btmbar")
-
-  
-  img(id="activeWeapon" style="position:absolute;top:700px;left:1300px;z-index:8;width:100px;height:100px;")
-
-  
-  select(style="position:absolute;top:670px;left:1300px;z-index:7;" id="select")
-    option(value="choose any") choose any
-      for weapon in weapons
-        option(value=weapon.name style="color:white;")= weapon.name
-  div(style="display:block;margin:auto;width:40%;height:100%;")
-    img(id="scanBar" src="/img/scanbar.png" style="width:40%;position:absolute;bottom:0;z-index:8;")
-
 

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 
 
 
@@ -24,17 +24,18 @@ var userSchema = mongoose.Schema({
   email: {
     type: String
   },
-  location:
-      {
+  name: {
+    type: String
+  },
+  location: {
         "type": { "type": String, default: "Point" },
         "coordinates": [Number, Number],
-        "datetime": Date
+        // "datetime": Date
       },
-  points: {type:Number, default:10000},
-  tokens: {type:Number, default:100},
-  weapons: {type:Array, default:["mine1", "emp1", "missile1"]},
-  abilities: [],
-  imageUrl: {type:String, default:'/img/gravatar.jpg'}
+  // messages: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "message"
+  // }]
 });
 
 userSchema.index({ "location.coordinates": "2dsphere"});
@@ -62,7 +63,7 @@ userSchema.pre('save', function(next){
     if(err) return next(err);
 
     // If we are successful, use the salt to run the encryption on the given password
-    bcrypt.hash(user.password, salt, function(err, hash){
+    bcrypt.hash(user.password, salt, function(){}, function(err, hash){
 
       // If there was an error, allow execution to move to the next middleware
       if(err) return next(err);

@@ -10,14 +10,6 @@ var loginController = require('./controllers/login.js');
 var adminController = require('./controllers/admin');
 var userController = require('./controllers/users');
 
-// Seed the database
-var Weapons = require('./models/seeds/seed.js');
-
-var User = require('./models/users.js');
-var Weapon = require('./models/weapons.js');
-
-
-
 
 
 
@@ -25,7 +17,8 @@ var passport = require('passport');
 var passportConfig = require('./config/passport');
 
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/warrior');
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/geomsgs');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
@@ -52,8 +45,32 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
+// var Message = require('./models/messages.js');
+// var count = 0;
+
+// app.use(function(req, res, next){
+// 	if(count === 0){
+// 		var newMsg = new Message({
+// 			location: {
+// 				coordinates: [27.1580, -80.19289]
+// 			},
+// 			datetime: new Date(),
+// 			postedBy: "58b644eeb3048b047c65848f"
+// 		});
+
+// 		newMsg.save(function(err, data){
+
+// 		})
+
+// 		count++;
+// 	}else{
+// 		Message.find({}).populate("postedBy").exec(function(err, data){
+// 			console.log(data);
+// 		})
+// 	}
 
 
+// })
 
 
 
@@ -90,31 +107,13 @@ app.use(passportConfig.isLoggedIn);
 
 
 app.get('/home', indexController.index);
-
-// Get Users location signed in(/App is open)
 app.post('/locate', userController.locate);
+app.get('/explore', userController.explore);
 
 
 
 
 
-app.get('/scan', userController.scan)
-app.get('/weapon', function(req, res){
-  console.log(req.query.weapon)
-
-  Weapon.findOne({"name": req.query.weapon}, function(err, data){
-    console.log(data.imageUrl)
-
-    res.send(data);
-  });
-
-});
-
-
-
-
-
-
-var server = app.listen(4613, function() {
+var server = app.listen(8888, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });

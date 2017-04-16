@@ -1,31 +1,46 @@
-html { width:100%; height:100%; margin: 0; padding: 0; background-color: black; }
-body { width:100%; height:100%;margin: 0; padding: 0; background-color: black;}
+html, body { width:100%; height:100%; margin: 0; padding: 0; background: darkgrey;}
 
 #map {
-  width: 99.9%;
-  height: 95%;
-  z-index:1;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top:40px;
 }
-/*h2{
-  font-family: 'Cutive Mono';
-}*/
+
 header{
-  height:200px;
+  height:75px;
   width:100%;
-  background-color: darkblue;
+  background-color: black;
+  opacity: 0.4;
+  position: absolute;
+  z-index: 3;
+}
+
+
+#titleName {
+    position:absolute;
+    left:80px;
+    color:darkgrey;
+}
+
+#playerName {
+  position:absolute;
+  right:120px;
+  color:darkgrey;
 }
 
 
 .login{
-  width:30.22%;
-  height:39.6%;
-  padding: 5px 0 0 20px;
-  /*position:relative;*/
-  border-radius: 5px;
-  margin:auto;
-  margin-top: 120px;
+  width:20%;
+  max-height: auto;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#loginForm div {
+  margin-bottom: 5px;
 }
 .btn-block{
   margin-top: 10px;
@@ -34,7 +49,7 @@ header{
 .inputlogin {
   margin-top: 5px;
   margin-bottom: 5px;
-  width:305px;
+  width:100%;
   height:35px;
 }
 
@@ -43,73 +58,143 @@ header{
   right:0;
 }
 
-/*.btmbar {
-  background-color: rgb(5,21,26);
-  position: absolute;
-  top: 634px;
-  left:162px;
-  width:80%;
-  height:172px;
-  z-index:5;
-  opacity:0.5;
-}*/
-
-.btmbar {
-  background-color: rgb(5,21,26);
-  position: absolute;
-  /*top: 634px;*/
-  bottom:0px;
-  margin: auto;
-  width:92%;
-  height:172px;
-  z-index:5;
-  opacity:0.5;
+.btn-facebook {
+  width: 100%;
 }
 
-.scanradius1{
-     height:275px;
-     width:470px;
-     position: absolute;
-      top: 450px;
-      left:570px;
-     border-radius: 470px 470px 0 0;
-     -moz-border-radius: 470px 470px 0 0;
-     -webkit-border-radius: 470px 470px 0 0;
-     /*background:green;*/
-     background-color: rgb(242,26,61);
-     border:3px solid rgb(242,26,61);
-     opacity: 0.2;
-     z-index: 3;
-     visibility: hidden;
-}
-.scanradius2{
-     height:485px;
-     width:820px;
-     position: absolute;
-      top: 270px;
-      left:394px;
-     border-radius: 820px 820px 0 0;
-     -moz-border-radius: 820px 820px 0 0;
-     -webkit-border-radius: 820px 820px 0 0;
-     /*background:green;*/
-     border:180px solid yellow;
-     border-bottom: none;
-     opacity: 0.2;
-     z-index: 4;
-     visibility: hidden;
+.btn-google {
+  width:100%;
 }
 
-/*@media (max-height: 2400px) {
-    #map{
-      width:1400px;
-      height:2250px;
-  z-index:1;
-  position: absolute;
-  top:150px;
-    }
-    header{
-  height:150px;
-  width:1400px;
-  background-color: #333536;
+/******************* modal dialog box ********************/
+/*********************************************************/
+#modalHead {
+  text-align: center;
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+  color: #333;
+  text-shadow: 0 1px 0 #fff;
+  margin: 50px 0;
 }
-}*/
+
+#modalOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 200ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#modalOverlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+#modalPopup {
+  margin: 75px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #666;
+  width: 300px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index:12;
+}
+
+#modalPopup h2 {
+  margin-top: 0;
+  color: #666;
+  font-family: "Trebuchet MS", Tahoma, Arial, sans-serif;
+}
+
+#modalPopup .close {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20px;
+  right: 20px;
+  opacity: 0.9;
+  transition: all 200ms;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #666;
+}
+
+#modalPopup .close:hover {
+  opacity: 1;
+}
+
+#modalPopup .content {
+  max-height: 400px;
+  overflow: auto;
+}
+
+#modalPopup p {
+  margin: 0 0 1em;
+}
+
+#modalPopup p:last-child {
+  margin: 0;
+}
+/*********************************************************/
+/******************* modal dialog box ********************/
+
+
+@media (max-width: 1000px) {
+  .login {
+    width: 30%;
+  }
+}
+
+
+
+@media (max-width: 800px) {
+  .login {
+    width: 40%;
+  }
+}
+
+
+
+@media (max-width:674px) {
+  #titleName {
+    left:50px;
+  }
+  #playerName {
+    right:100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .login {
+    width: 50%;
+  }
+}
+
+@media (max-width: 590px) {
+  #titleName {
+    left:30px;
+  }
+  #playerName {
+    right:80px;
+  }
+}
+
+@media (max-width: 510px) {
+  #titleName {
+    left:5px;
+  }
+  #playerName {
+    right:60px;
+  }
+}
+
+@media (max-width: 450px) {
+  #playerName {
+    right:45px;
+  }
+}

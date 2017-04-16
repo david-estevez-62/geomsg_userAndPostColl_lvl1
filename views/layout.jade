@@ -2,24 +2,38 @@ doctype html
 html(lang='en')
   head
     meta(charset="utf-8")
-    title GeoTag
-    link(rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")
-    link(rel="stylesheet", type="text/css", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
+    title GeoMsg
     link(rel="stylesheet", type="text/css", href="/main.css")
 
 
   body
-    header
-        h1(style="color:darkgrey;padding-left:10px;letter-spacing:1.5px;margin-top:3px;") GeoTag
-        h1(style="color:white;position:absolute;margin-top:-39px;right:90px;")= user.points + " | " +user.username
-         //- btn#scanbtn(class="btn btn-default") Scan Area
-        a.navbtn(href="/" class="btn btn-default" role="button" style="margin-top:-40px;") Logout
+    div(style="position:absolute;z-index:5;width:100%;")
+        h2#titleName GeoMsg
+        h2#playerName= user.username
+        a.navbtn(href="/" role="button" style="position:absolute;width:50px;height:20px;background:white;") Logout
 
-    
+
+        div#center-ctrls(style="position:absolute;top:0;left:50%;width:120px;margin-left:-60px;background:red;")
+            input#send-status(type="button" value="message off" style="width:120px;background:darkgrey;")
+            input#explore(type="button" value="discover off" style="width:120px;background:darkgrey;")
+
+
+        #modalOverlay
+            #modalPopup
+                h2#modalHead Info box
+                a.close(href='#!') ×
+                .content
+                    form#addMsgForm(action="/setmsg" method="POST")
+                        input(type="text" placeholder="add imageUrl" style="display:block;")
+                        input(type="text" placeholder="add text" style="display:block;")
+                        input(type="submit" value="submit")
+
+    header
+        
+
 
     block content
 
-    script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUaQQwfhiO-ZsQYZtgCZcm6L07w4di4JU")
+    script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_H4LritTH7GiZ_8Tt8SWgBU8rRLF2a-4")
     script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
-    script(src="http://code.jquery.com/ui/1.11.4/jquery-ui.js")
     script(src="/client.js")
